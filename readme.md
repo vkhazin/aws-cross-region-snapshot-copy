@@ -27,14 +27,4 @@ cd ./aws-cross-region-snapshot-copy`
 1. Update `./cron-job.sh` with desired volume id, source and target regions
 1. Update `./setup-cron-job.sh` with the desired cron execution mask
 1. Run the setup script `sudo ./setup-cron-job.sh`
-1. All set!
-
-## How to run the script for testing purposes
-
-* Execute in the terminal: 
-```
-VOLUME_ID='vol-0629a13db343a19c0'
-SOURCE_REGION='us-east-2'
-TARGET_REGION='us-east-1'
-./copy-snapshot.sh -v "$VOLUME_ID" -s "$SOURCE_REGION" -t "$TARGET_REGION"
-```
+1. Test the deployment by running: `sudo /opt/shapshot-copy/cron-job.sh`
