@@ -3,7 +3,7 @@
 TIMEOUT=600  # Timeout to wait the snapshot copy. In seconds
 REMOVE_LOGS_OLDER_THAN=30 # in days
 
-LOG_PATH="/var/log/*/5 * * * * ec2-user python my-python-script"
+LOG_PATH="/var/log/snashot-copy"
 LOG_FILE=`date '+%Y-%m-%d'.log`
 
 while getopts v:s:t: option
