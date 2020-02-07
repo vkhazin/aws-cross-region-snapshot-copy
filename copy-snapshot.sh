@@ -36,7 +36,7 @@ get_last_snapshot () {
         --filter Name=volume-id,Values=$VOLUME_ID\
         --query="reverse(sort_by(Snapshots,&StartTime))[0].SnapshotId"\
         --output text\
-        --region $SOURCE_REGION` | tee -a $LOG_PATH/$LOG_FILE
+        --region $SOURCE_REGION`
 }
 
 copy_snapshot () {
