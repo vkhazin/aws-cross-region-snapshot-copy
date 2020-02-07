@@ -1,10 +1,13 @@
 #!/bin/bash 
 
+set -e
+
 TIMEOUT=600  # Timeout to wait the snapshot copy. In seconds
 REMOVE_LOGS_OLDER_THAN=30 # in days
 
 # LOG_PATH="/var/log/snapshot-copy"
 # LOG_FILE=`date '+%Y-%m-%d'.log`
+# mkdir -p $LOG_PATH
 
 while getopts v:s:t: option
 do 
@@ -26,9 +29,6 @@ if [[ -z $VOLUME_ID || -z $TARGET_REGION || -z $SOURCE_REGION ]]; then
     exit 1
 fi
 
-set -e
-
-mkdir -p $LOG_PATH
 # Get last  snapshot ID from volume with $VOLUME_ID
 get_last_snapshot () {
     VOLUME_ID=$1
