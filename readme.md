@@ -19,7 +19,7 @@
 1. Login to the newly created EC2 instance using SSH
 1. Clone this repository:
 ```
-sudo yum install git -i
+sudo yum install git -y
 git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy
 cd ./aws-cross-region-snapshot-copy`
 ```
