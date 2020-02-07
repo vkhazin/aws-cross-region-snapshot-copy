@@ -25,7 +25,7 @@ cd ./aws-cross-region-snapshot-copy`
 ```
 *  Grant execution permissions: `chmod +x ./*.sh`
 *  Update `./cron-job.sh` with desired volume id, source and target regions
-*  Update `./setup-cron-job.sh` with the desired cron execution mask
+*  Update `./setup-cron-job.sh` with the desired cron execution [mask](https://crontab.guru/)
 *  Run the setup script `sudo ./setup-cron-job.sh`
 *  Test the deployment by running: `sudo /opt/shapshot-copy/cron-job.sh`
 *  Verify no errors have been logged: `sudo cat /var/log/snapshot-copy/`date '+%Y-%m-%d'.log`
