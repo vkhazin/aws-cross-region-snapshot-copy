@@ -2,7 +2,7 @@
 
 ## Scope
 
-1. Create bash script using aws-cli runing on Amazon Linux t3.nano instance
+*  Create bash script using aws-cli runing on Amazon Linux t3.nano instance
 2. EC2 instance configured with a role and a policy to allow credential-less execution, manually
 3. Input parameters to the script: source-volume-id, source-region, and target-region
 4. The script to find and copy the latest snapshot available for the volume provided from the source region to the target region
@@ -12,24 +12,24 @@
 
 ## How to configure
 
-1. Create new IAM Policy for EC2 Role with the plocy document: `./iam-policy.json`
-1. Create new IAM Role with the policy created in the previous step
-1. Launch a t3.nano instance of Amazon Linux
-1. Assign the created IAM role to the new Amazon Linux instance to grant it required permissions without embedded credentials
-1. Login to the newly created EC2 instance using SSH
-1. Clone this repository:
+*  Create new IAM Policy for EC2 Role with the plocy document: `./iam-policy.json`
+*  Create new IAM Role with the policy created in the previous step
+*  Launch a t3.nano instance of Amazon Linux
+*  Assign the created IAM role to the new Amazon Linux instance to grant it required permissions without embedded credentials
+*  Login to the newly created EC2 instance using SSH
+*  Clone this repository:
 ```
 sudo yum install git -y
 git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy
 cd ./aws-cross-region-snapshot-copy`
 ```
-1. Grant execution permissions: `chmod +x ./*.sh`
-1. Update `./cron-job.sh` with desired volume id, source and target regions
-1. Update `./setup-cron-job.sh` with the desired cron execution mask
-1. Run the setup script `sudo ./setup-cron-job.sh`
-1. Test the deployment by running: `sudo /opt/shapshot-copy/cron-job.sh`
-1. Verify no errors have been logged: `sudo cat /var/log/snapshot-copy/`date '+%Y-%m-%d'.log`
+*  Grant execution permissions: `chmod +x ./*.sh`
+*  Update `./cron-job.sh` with desired volume id, source and target regions
+*  Update `./setup-cron-job.sh` with the desired cron execution mask
+*  Run the setup script `sudo ./setup-cron-job.sh`
+*  Test the deployment by running: `sudo /opt/shapshot-copy/cron-job.sh`
+*  Verify no errors have been logged: `sudo cat /var/log/snapshot-copy/`date '+%Y-%m-%d'.log`
 
 ## How to copy snapshot for multiple volumes
 
-1. Duplicate lines in the `/opt/snapshot-copy/cron-job.sh` file
+*  Duplicate lines in the `/opt/snapshot-copy/cron-job.sh` file
