@@ -9,10 +9,23 @@
 5. The script is to remove older snapshots from the target region for the same volume after the copy is successful
 6. The script to log output and errors to /var/log/snashot-copy/{yyyy-MM-dd}.log file and to delete logs older than X days configured in the script
 
-## How to run the script
+## How to configured
 
-* Grant execution permissions: `chmod +x ./*.sh`
-* Execute in a terminal: 
+1. Create new IAM Policy for EC2 Role with the plocy document: `./iam-policy.json`
+1. Create new IAM Role with the policy created in the previous step
+1. Launch a t3.nano instance of Amazon Linux
+1. Assign the IAM role to the new Amazon Linux instance to grant it required permissions without embedded credentials
+1. Login to the newly created EC2 instance 
+1. Clone this repository: `git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy && cd ./aws-cross-region-snapshot-copy`
+1. Grant execution permissions: `chmod +x ./*.sh`
+1. Update `./snapshot-copy-cron.sh` with desired volume id, source and target regions
+1. Update `./setup-cron-job.sh` with desired cron execution mask
+1. Run the setup script `./setup-cron-job.sh`
+1. All set!
+
+## How to run the script for testing purposes
+
+* Execute in the terminal: 
 ```
 VOLUME_ID='vol-0629a13db343a19c0'
 SOURCE_REGION='us-east-2'
