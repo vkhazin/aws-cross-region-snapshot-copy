@@ -17,11 +17,16 @@
 1. Launch a t3.nano instance of Amazon Linux
 1. Assign the created IAM role to the new Amazon Linux instance to grant it required permissions without embedded credentials
 1. Login to the newly created EC2 instance using SSH
-1. Clone this repository: `git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy && cd ./aws-cross-region-snapshot-copy`
+1. Clone this repository:
+```
+sudo yum install git -i
+git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy
+cd ./aws-cross-region-snapshot-copy`
+```
 1. Grant execution permissions: `chmod +x ./*.sh`
 1. Update `./cron-job.sh` with desired volume id, source and target regions
 1. Update `./setup-cron-job.sh` with the desired cron execution mask
-1. Run the setup script `./setup-cron-job.sh`
+1. Run the setup script `sudo ./setup-cron-job.sh`
 1. All set!
 
 ## How to run the script for testing purposes
