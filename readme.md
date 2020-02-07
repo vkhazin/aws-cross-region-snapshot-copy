@@ -28,3 +28,4 @@ cd ./aws-cross-region-snapshot-copy`
 1. Update `./setup-cron-job.sh` with the desired cron execution mask
 1. Run the setup script `sudo ./setup-cron-job.sh`
 1. Test the deployment by running: `sudo /opt/shapshot-copy/cron-job.sh`
+1. Verify no errors have been logged: `sudo cat /var/log/snapshot-copy/`date '+%Y-%m-%d'.log`
