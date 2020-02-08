@@ -52,9 +52,9 @@ copy_snapshot () {
     --region $TARGET_REGION
 echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Target snapshot: $copy_snapshot_id in region: $TARGET_REGION"
   echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Checking snapshot migration progress..."
-  #limit=expr $TIMEOUT / $SLEEP_SECONDS
-  #echo "Limit waiting to $limit iterations of $SLEEP_SECONDS each..."
-  for i in `seq 1 10`; do
+  limit=`expr $TIMEOUT / $SLEEP_SECONDS`
+  echo "Trying up to $limit iterations with $SLEEP_SECONDS seconds sleep interval each..."
+  for i in `seq 1 $limit`; do
    status=`aws ec2 describe-snapshots \
       --filter Name=snapshot-id,Values=$copy_snapshot_id \
       --region $TARGET_REGION \
