@@ -54,7 +54,9 @@ echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Target snapshot: $copy_snapshot_id in regi
   echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Checking snapshot migration progress..."
   limit=`expr $TIMEOUT / $SLEEP_SECONDS`
   echo "Trying up to $limit iterations with $SLEEP_SECONDS seconds sleep interval each..."
-  for i in `seq 1 $limit`; do
+  i=0
+  while true; do
+  i=`expr $i + 1`
    status=`aws ec2 describe-snapshots \
       --filter Name=snapshot-id,Values=$copy_snapshot_id \
       --region $TARGET_REGION \
@@ -67,9 +69,9 @@ echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Target snapshot: $copy_snapshot_id in regi
       echo $(date '+%Y-%m-%d %H:%M:%S:%N') "An error has occured copying snapshot!"
       exit 1            
     else
-      echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Snapshot migration status: $status..."
+      echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Snapshot migration status: $status, iteration: $i..."
     fi
-    if [[ $i > $limit ]]; then
+    if [[ $i -gt $limit ]]; then
       echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Timeout has occured! Migration of a snapshot took too long"
       exit 1
     fi
