@@ -21,7 +21,7 @@
 ```
 sudo yum install git -y
 git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy
-cd ./aws-cross-region-snapshot-copy`
+cd ./aws-cross-region-snapshot-copy
 ```
 *  Grant execution permissions: `chmod +x ./*.sh`
 *  Update `./cron-job.sh` with desired volume id, source and target regions

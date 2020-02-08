@@ -69,7 +69,7 @@ echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Target snapshot: $copy_snapshot_id in regi
     else
       echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Snapshot migration status: $status..."
     fi
-    if [[ $i == 10 ]]; then
+    if [[ $i > $limit ]]; then
       echo $(date '+%Y-%m-%d %H:%M:%S:%N') "Timeout has occured! Migration of a snapshot took too long"
       exit 1
     fi
