@@ -24,10 +24,10 @@ git clone https://github.com/vkhazin/aws-cross-region-snapshot-copy
 cd ./aws-cross-region-snapshot-copy
 ```
 *  Grant execution permissions: `chmod +x ./*.sh`
-*  Update `./cron-job.sh` with desired volume id, source and target regions
-*  Update `./setup-cron-job.sh` with the desired cron execution [mask](https://crontab.guru/)
+*  Update `nano ./cron-job.sh` with desired volume id, source and target regions
+*  Update `nano  ./setup-cron-job.sh` with the desired cron execution [mask](https://crontab.guru/)
 *  Run the setup script `sudo ./setup-cron-job.sh`
-*  Test the deployment by running: `sudo /opt/shapshot-copy/cron-job.sh`
+*  Test the deployment by running: `sudo /opt/snapshot-copy/cron-job.sh`
 *  Verify no errors have been logged: `sudo tail -f -n 100 /var/log/snapshot-copy/$(date '+%Y-%m-%d'.log)`
 
 ## How to copy snapshot for multiple volumes
