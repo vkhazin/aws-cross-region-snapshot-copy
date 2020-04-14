@@ -1,4 +1,4 @@
-# Aws Snapshot Copy between regions
+# Copy EC2 Snapshot between regions
 
 ## Scope
 
